@@ -31,12 +31,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { usePortfolioStore } from '@/stores/portfolio'
-import { useI18n } from '@/i18n'
+import { computed } from 'vue';
+import { usePortfolioStore } from '@/stores/portfolio';
+import { useI18n } from '@/i18n';
 
-const store = usePortfolioStore()
-const { t } = useI18n()
+const store = usePortfolioStore();
+const { t } = useI18n();
 
 const iconMap: Record<string, string> = {
   React: 'devicon-react-original colored',
@@ -56,7 +56,7 @@ const iconMap: Record<string, string> = {
   Capacitor: 'devicon-capacitor-plain colored',
   Ionic: 'devicon-ionic-original colored',
   Storybook: 'devicon-storybook-plain colored',
-}
+};
 
 const emojiMap: Record<string, string> = {
   Pinia: '🍍',
@@ -71,10 +71,10 @@ const emojiMap: Record<string, string> = {
   Scrum: '🔄',
   Kanban: '📋',
   Highcharts: '📊',
-}
+};
 
-const row1 = computed(() => store.skills.slice(0, Math.ceil(store.skills.length / 2)))
-const row2 = computed(() => store.skills.slice(Math.ceil(store.skills.length / 2)))
+const row1 = computed(() => store.skills.slice(0, Math.ceil(store.skills.length / 2)));
+const row2 = computed(() => store.skills.slice(Math.ceil(store.skills.length / 2)));
 </script>
 
 <style scoped lang="scss">

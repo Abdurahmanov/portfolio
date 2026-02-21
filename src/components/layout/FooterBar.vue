@@ -7,11 +7,11 @@
 </template>
 
 <script setup lang="ts">
-import { usePortfolioStore } from '@/stores/portfolio'
-import { useI18n } from '@/i18n'
-const store = usePortfolioStore()
-const { t } = useI18n()
-const year = new Date().getFullYear()
+import { usePortfolioStore } from '@/stores/portfolio';
+import { useI18n } from '@/i18n';
+const store = usePortfolioStore();
+const { t } = useI18n();
+const year = new Date().getFullYear();
 </script>
 
 <style scoped lang="scss">

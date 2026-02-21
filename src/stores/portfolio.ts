@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const usePortfolioStore = defineStore('portfolio', () => {
   const personal = {
@@ -10,7 +10,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
     locationRu: 'Рандстад, Нидерланды',
     email: 'hello@abdurakhmanov.art',
     linkedin: 'https://www.linkedin.com/in/abdurakhmanov-artur/',
-  }
+  };
 
   const skills = [
     'React',
@@ -42,7 +42,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
     'Highcharts',
     'Capacitor',
     'Ionic',
-  ]
+  ];
 
   const experience = [
     {
@@ -134,7 +134,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
         ],
       },
     },
-  ]
+  ];
 
   const education = [
     {
@@ -157,9 +157,9 @@ export const usePortfolioStore = defineStore('portfolio', () => {
         ru: 'Вычислительная техника',
       },
     },
-  ]
+  ];
 
-  const languages = ['English', 'Русский']
+  const languages = ['English', 'Русский'];
 
-  return { personal, skills, experience, education, languages }
-})
+  return { personal, skills, experience, education, languages };
+});

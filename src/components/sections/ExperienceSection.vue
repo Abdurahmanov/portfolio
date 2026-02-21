@@ -9,8 +9,11 @@
             <div v-if="index < store.experience.length - 1" class="exp__line"></div>
           </div>
           <div
-            v-reveal="{ direction: index % 2 === 0 ? 'right' : 'left', delay: '0.1s' }"
-            class="exp__card glass-card"
+            v-reveal="{
+              direction: index % 2 === 0 ? 'right' : 'left',
+              delay: `${0.15 + index * 0.2}s`,
+            }"
+            class="exp__card glass-card glass-card_interactive"
           >
             <div
               class="exp__header"
@@ -72,22 +75,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { usePortfolioStore } from '@/stores/portfolio'
-import { useI18n } from '@/i18n'
+import { ref } from 'vue';
+import { usePortfolioStore } from '@/stores/portfolio';
+import { useI18n } from '@/i18n';
 
-const store = usePortfolioStore()
-const { t, locale } = useI18n()
+const store = usePortfolioStore();
+const { t, locale } = useI18n();
 
-const expanded = ref<Set<number>>(new Set([0]))
+const expanded = ref<Set<number>>(new Set([0]));
 
 function toggle(jobIndex: number) {
   if (expanded.value.has(jobIndex)) {
-    expanded.value.delete(jobIndex)
+    expanded.value.delete(jobIndex);
   } else {
-    expanded.value.add(jobIndex)
+    expanded.value.add(jobIndex);
   }
-  expanded.value = new Set(expanded.value)
+  expanded.value = new Set(expanded.value);
 }
 </script>
 

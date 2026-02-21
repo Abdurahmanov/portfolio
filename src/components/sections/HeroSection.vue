@@ -55,25 +55,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { usePortfolioStore } from '@/stores/portfolio'
-import { useI18n } from '@/i18n'
+import { ref } from 'vue';
+import { usePortfolioStore } from '@/stores/portfolio';
+import { useI18n } from '@/i18n';
 
-const store = usePortfolioStore()
-const { t, locale } = useI18n()
+const store = usePortfolioStore();
+const { t, locale } = useI18n();
 
-const mouseX = ref(50)
-const mouseY = ref(50)
+const mouseX = ref(50);
+const mouseY = ref(50);
 
 function onMouseMove(e: MouseEvent) {
-  const el = e.currentTarget as HTMLElement
-  const rect = el.getBoundingClientRect()
-  mouseX.value = ((e.clientX - rect.left) / rect.width) * 100
-  mouseY.value = ((e.clientY - rect.top) / rect.height) * 100
+  const el = e.currentTarget as HTMLElement;
+  const rect = el.getBoundingClientRect();
+  mouseX.value = ((e.clientX - rect.left) / rect.width) * 100;
+  mouseY.value = ((e.clientY - rect.top) / rect.height) * 100;
 }
 
 function scrollTo(selector: string) {
-  document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' })
+  document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
 }
 </script>
 
@@ -308,6 +308,7 @@ function scrollTo(selector: string) {
 .btn {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   padding: $spacing-sm $spacing-xl;
   font-family: inherit;
   font-size: $font-size-base;
@@ -316,7 +317,6 @@ function scrollTo(selector: string) {
   border: 1px solid transparent;
   border-radius: $border-radius-sm;
   transition: all $transition-base;
-  min-height: 44px;
 
   &_primary {
     color: #fff;

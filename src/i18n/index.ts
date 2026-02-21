@@ -1,5 +1,5 @@
-import { computed } from 'vue'
-import { useAppStore } from '@/stores/app'
+import { computed } from 'vue';
+import { useAppStore } from '@/stores/app';
 
 export const messages = {
   en: {
@@ -20,7 +20,7 @@ export const messages = {
     about: {
       title: 'About Me',
       description:
-        'Senior Frontend Developer with 10 years of experience building scalable web applications using React/Next.js and Vue/Nuxt.js. Expertise in Core Web Vitals optimization, micro-frontends, and data-driven development through A/B testing. Strong problem-solving skills, experience in mentoring, and a deep understanding of Agile development processes.',
+        'Senior Frontend Developer with {years} years of experience building scalable web applications using React/Next.js and Vue/Nuxt.js. Expertise in Core Web Vitals optimization, micro-frontends, and data-driven development through A/B testing. Strong problem-solving skills, experience in mentoring, and a deep understanding of Agile development processes.',
       languages: 'Languages',
     },
     skills: { title: 'Skills' },
@@ -51,7 +51,7 @@ export const messages = {
     about: {
       title: 'О себе',
       description:
-        'Senior Frontend Developer с 10-летним опытом создания масштабируемых веб-приложений на React/Next.js и Vue/Nuxt.js. Специализируюсь на оптимизации Core Web Vitals, микрофронтендах и разработке на основе данных через A/B тестирование. Сильные навыки решения задач, опыт менторинга и глубокое понимание Agile-процессов.',
+        'Senior Frontend Developer с {years}-летним опытом создания масштабируемых веб-приложений на React/Next.js и Vue/Nuxt.js. Специализируюсь на оптимизации Core Web Vitals, микрофронтендах и разработке на основе данных через A/B тестирование. Сильные навыки решения задач, опыт менторинга и глубокое понимание Agile-процессов.',
       languages: 'Языки',
     },
     skills: { title: 'Навыки' },
@@ -64,13 +64,30 @@ export const messages = {
     },
     footer: { copy: 'Все права защищены.' },
   },
-} as const
+} as const;
 
-export type Messages = typeof messages.en
+export type Messages = typeof messages.en;
+
+function calcYearsOfExperience(): number {
+  const start = new Date(2015, 7, 1);
+  const now = new Date();
+  let years = now.getFullYear() - start.getFullYear();
+  const hasPassedAnniversary =
+    now.getMonth() > start.getMonth() ||
+    (now.getMonth() === start.getMonth() && now.getDate() >= start.getDate());
+  if (!hasPassedAnniversary) {
+    years -= 1;
+  }
+  return years;
+}
 
 export function useI18n() {
-  const appStore = useAppStore()
-  const locale = computed(() => appStore.locale)
-  const t = computed(() => messages[appStore.locale])
-  return { t, locale }
+  const appStore = useAppStore();
+  const locale = computed(() => appStore.locale);
+  const t = computed(() => messages[appStore.locale]);
+  const yearsOfExperience = computed(() => calcYearsOfExperience());
+  const aboutDescription = computed(() =>
+    t.value.about.description.replace('{years}', String(yearsOfExperience.value)),
+  );
+  return { t, locale, yearsOfExperience, aboutDescription };
 }

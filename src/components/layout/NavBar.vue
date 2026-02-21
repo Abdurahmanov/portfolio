@@ -65,47 +65,47 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useAppStore } from '@/stores/app'
-import { useI18n } from '@/i18n'
-import type { Locale } from '@/stores/app'
+import { ref, onMounted, onUnmounted } from 'vue';
+import { useAppStore } from '@/stores/app';
+import { useI18n } from '@/i18n';
+import type { Locale } from '@/stores/app';
 
-const appStore = useAppStore()
-const { t } = useI18n()
+const appStore = useAppStore();
+const { t } = useI18n();
 
-const isScrolled = ref(false)
-const isMenuOpen = ref(false)
-const scrollProgress = ref(0)
+const isScrolled = ref(false);
+const isMenuOpen = ref(false);
+const scrollProgress = ref(0);
 
-const navIds = ['about', 'skills', 'experience', 'education', 'contact'] as const
+const navIds = ['about', 'skills', 'experience', 'education', 'contact'] as const;
 
 function handleScroll() {
-  isScrolled.value = window.scrollY > 50
-  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight
-  scrollProgress.value = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0
+  isScrolled.value = window.scrollY > 50;
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  scrollProgress.value = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
 }
 
 function toggleMenu() {
-  isMenuOpen.value = !isMenuOpen.value
-  document.documentElement.style.overflow = isMenuOpen.value ? 'hidden' : ''
+  isMenuOpen.value = !isMenuOpen.value;
+  document.documentElement.style.overflow = isMenuOpen.value ? 'hidden' : '';
 }
 
 function closeMenu() {
-  isMenuOpen.value = false
-  document.documentElement.style.overflow = ''
+  isMenuOpen.value = false;
+  document.documentElement.style.overflow = '';
 }
 
 function scrollToSection(id: string) {
-  closeMenu()
-  document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
+  closeMenu();
+  document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
 }
 
-onMounted(() => window.addEventListener('scroll', handleScroll, { passive: true }))
+onMounted(() => window.addEventListener('scroll', handleScroll, { passive: true }));
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-  document.documentElement.style.overflow = ''
-})
+  window.removeEventListener('scroll', handleScroll);
+  document.documentElement.style.overflow = '';
+});
 </script>
 
 <style scoped lang="scss">

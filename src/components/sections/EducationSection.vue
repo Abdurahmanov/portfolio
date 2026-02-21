@@ -21,11 +21,11 @@
 </template>
 
 <script setup lang="ts">
-import { usePortfolioStore } from '@/stores/portfolio'
-import { useI18n } from '@/i18n'
+import { usePortfolioStore } from '@/stores/portfolio';
+import { useI18n } from '@/i18n';
 
-const store = usePortfolioStore()
-const { t, locale } = useI18n()
+const store = usePortfolioStore();
+const { t, locale } = useI18n();
 </script>
 
 <style scoped lang="scss">

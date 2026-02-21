@@ -194,7 +194,6 @@ img {
 
   &_interactive {
     cursor: default;
-    user-select: none;
 
     &:hover {
       border-color: var(--color-accent-border);

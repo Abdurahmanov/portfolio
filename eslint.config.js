@@ -1,10 +1,10 @@
-import js from '@eslint/js'
-import pluginVue from 'eslint-plugin-vue'
-import * as tseslint from 'typescript-eslint'
-import stylistic from '@stylistic/eslint-plugin'
-import prettierConfig from '@vue/eslint-config-prettier'
-import vueEslintParser from 'vue-eslint-parser'
-import globals from 'globals'
+import js from '@eslint/js';
+import pluginVue from 'eslint-plugin-vue';
+import * as tseslint from 'typescript-eslint';
+import stylistic from '@stylistic/eslint-plugin';
+import prettierConfig from '@vue/eslint-config-prettier';
+import vueEslintParser from 'vue-eslint-parser';
+import globals from 'globals';
 
 export default [
   {
@@ -35,6 +35,7 @@ export default [
     rules: {
       'vue/block-order': ['error', { order: ['template', 'script', 'style'] }],
       'vue/multi-word-component-names': 'off',
+      curly: ['error', 'all'],
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       '@stylistic/padding-line-between-statements': [
         'error',
@@ -45,4 +46,4 @@ export default [
       ],
     },
   },
-]
+];

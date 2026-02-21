@@ -4,7 +4,7 @@
       <h2 v-reveal class="section-title">{{ t.about.title }}</h2>
       <div class="about__grid">
         <div v-reveal="{ delay: '0.1s' }" class="about__text">
-          <p class="about__summary">{{ t.about.description }}</p>
+          <p class="about__summary">{{ aboutDescription }}</p>
         </div>
         <div v-reveal="{ direction: 'left', delay: '0.2s' }" class="about__langs">
           <h3 class="about__subtitle">{{ t.about.languages }}</h3>
@@ -21,10 +21,10 @@
 </template>
 
 <script setup lang="ts">
-import { usePortfolioStore } from '@/stores/portfolio'
-import { useI18n } from '@/i18n'
-const store = usePortfolioStore()
-const { t } = useI18n()
+import { usePortfolioStore } from '@/stores/portfolio';
+import { useI18n } from '@/i18n';
+const store = usePortfolioStore();
+const { t, aboutDescription } = useI18n();
 </script>
 
 <style scoped lang="scss">
