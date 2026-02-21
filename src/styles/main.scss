@@ -1,0 +1,204 @@
+@use '@/styles/variables' as *;
+
+:root {
+  --color-bg: #0d1117;
+  --color-bg-secondary: #161b22;
+  --color-bg-card: #1c2128;
+  --color-border: #30363d;
+  --color-accent: #58a6ff;
+  --color-accent-hover: #79b8ff;
+  --color-text-primary: #e6edf3;
+  --color-text-secondary: #8b949e;
+  --color-text-muted: #6e7681;
+  --color-navbar-bg: rgb(13 17 23 / 90%);
+  --color-accent-glow: rgb(88 166 255 / 12%);
+  --color-accent-subtle: rgb(88 166 255 / 6%);
+  --color-accent-border: rgb(88 166 255 / 35%);
+  --color-shadow: 0 4px 24px rgb(0 0 0 / 40%);
+  --color-mouse-glow: rgb(88 166 255 / 10%);
+  --color-gradient-start: #58a6ff;
+  --color-gradient-end: #a371f7;
+  --color-glass-bg: rgb(28 33 40 / 60%);
+  --color-glass-border: rgb(255 255 255 / 5%);
+}
+
+[data-theme='light'] {
+  --color-bg: #fff;
+  --color-bg-secondary: #f6f8fa;
+  --color-bg-card: #fff;
+  --color-border: #d0d7de;
+  --color-accent: #0969da;
+  --color-accent-hover: #1f6feb;
+  --color-text-primary: #1f2328;
+  --color-text-secondary: #57606a;
+  --color-text-muted: #6e7781;
+  --color-navbar-bg: rgb(255 255 255 / 90%);
+  --color-accent-glow: rgb(9 105 218 / 12%);
+  --color-accent-subtle: rgb(9 105 218 / 10%);
+  --color-accent-border: rgb(9 105 218 / 30%);
+  --color-shadow: 0 4px 24px rgb(0 0 0 / 8%);
+  --color-mouse-glow: rgb(9 105 218 / 11%);
+  --color-gradient-start: #0969da;
+  --color-gradient-end: #8250df;
+  --color-glass-bg: rgb(255 255 255 / 70%);
+  --color-glass-border: rgb(0 0 0 / 5%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  overflow-x: hidden;
+  scrollbar-gutter: stable; /* резервирует место под скроллбар — предотвращает layout shift */
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color $transition-fast;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  max-width: $max-width;
+  padding: 0 $spacing-xl;
+  margin: 0 auto;
+
+  @media (max-width: $bp-sm) {
+    padding: 0 $spacing-md;
+  }
+}
+
+.section {
+  padding: $spacing-4xl 0;
+  overflow: hidden;
+
+  @media (max-width: $bp-md) {
+    padding: $spacing-3xl 0;
+  }
+}
+
+.section-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: $spacing-2xl;
+  font-family: $font-family-display;
+  font-size: $font-size-3xl;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+
+  @media (max-width: $bp-md) {
+    font-size: $font-size-2xl;
+  }
+
+  &::after {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 4px;
+    content: '';
+    background: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-end));
+    border-radius: 2px;
+  }
+}
+
+::selection {
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+}
+
+.reveal {
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &_up {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  &_down {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+
+  &_left {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  &_right {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  &_fade {
+    opacity: 0;
+    transform: none;
+  }
+
+  &_visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.text-gradient {
+  color: transparent;
+  background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+  background: var(--color-glass-bg);
+  border: 1px solid var(--color-glass-border);
+  border-radius: $border-radius-md;
+  backdrop-filter: blur(12px);
+  transition:
+    border-color $transition-base,
+    box-shadow $transition-base;
+
+  &_interactive {
+    cursor: default;
+    user-select: none;
+
+    &:hover {
+      border-color: var(--color-accent-border);
+      box-shadow: 0 10px 30px var(--color-accent-subtle);
+    }
+  }
+}
