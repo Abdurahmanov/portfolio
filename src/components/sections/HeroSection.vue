@@ -10,18 +10,7 @@
     <div class="container hero__inner">
       <div class="hero__left hero__fade-in">
         <div class="hero__photo">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="100" cy="100" r="100" fill="transparent" />
-            <circle cx="100" cy="82" r="40" fill="var(--color-text-muted)" opacity="0.4" />
-            <ellipse
-              cx="100"
-              cy="190"
-              rx="62"
-              ry="48"
-              fill="var(--color-text-muted)"
-              opacity="0.4"
-            />
-          </svg>
+          <img src="/photo.png" alt="Artur Abdurakhmanov" fetchpriority="high" />
         </div>
         <div class="hero__badge">
           <span class="hero__badge-dot"></span>
@@ -115,7 +104,7 @@ function scrollTo(selector: string) {
     position: relative;
     z-index: 1;
     display: flex;
-    gap: $spacing-4xl;
+    gap: $spacing-5xl;
     align-items: center;
     padding-top: 80px;
     padding-bottom: $spacing-3xl;
@@ -149,7 +138,7 @@ function scrollTo(selector: string) {
     width: 220px;
     height: 220px;
     overflow: hidden;
-    background: var(--color-bg-card);
+    background: var(--color-photo-bg);
     border: 3px solid var(--color-glass-border);
     border-radius: 50%;
     box-shadow: var(--color-shadow);
@@ -173,9 +162,11 @@ function scrollTo(selector: string) {
       margin: 0 auto;
     }
 
+    img,
     svg {
       width: 100%;
       height: 100%;
+      object-fit: contain;
     }
   }
 

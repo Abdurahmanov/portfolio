@@ -14,8 +14,19 @@ function getInitialLocale(): Locale {
   return (localStorage.getItem('locale') as Locale) ?? 'en';
 }
 
+function getInitialTheme(): Theme {
+  const saved = localStorage.getItem('theme') as Theme;
+  if (saved === 'dark' || saved === 'light') {
+    return saved;
+  }
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  }
+  return 'light';
+}
+
 export const useAppStore = defineStore('app', () => {
-  const theme = ref<Theme>((localStorage.getItem('theme') as Theme) ?? 'light');
+  const theme = ref<Theme>(getInitialTheme());
   const locale = ref<Locale>(getInitialLocale());
 
   function toggleTheme() {

@@ -20,6 +20,11 @@
   --color-gradient-end: #a371f7;
   --color-glass-bg: rgb(28 33 40 / 60%);
   --color-glass-border: rgb(255 255 255 / 5%);
+  --color-photo-bg: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-accent) 40%, transparent),
+    color-mix(in srgb, #7c3aed 40%, transparent)
+  );
 }
 
 [data-theme='light'] {
@@ -42,6 +47,11 @@
   --color-gradient-end: #8250df;
   --color-glass-bg: rgb(255 255 255 / 70%);
   --color-glass-border: rgb(0 0 0 / 5%);
+  --color-photo-bg: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-accent) 60%, transparent),
+    color-mix(in srgb, #6d28d9 60%, transparent)
+  );
 }
 
 *,
@@ -101,11 +111,11 @@ img {
 }
 
 .section {
-  padding: $spacing-4xl 0;
+  padding: $spacing-5xl 0;
   overflow: hidden;
 
   @media (max-width: $bp-md) {
-    padding: $spacing-3xl 0;
+    padding: $spacing-4xl 0;
   }
 }
 
