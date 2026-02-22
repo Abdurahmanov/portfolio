@@ -10,7 +10,15 @@
     <div class="container hero__inner">
       <div class="hero__left hero__fade-in">
         <div class="hero__photo">
-          <img src="/photo.png" alt="Artur Abdurakhmanov" fetchpriority="high" />
+          <img
+            src="/photo.webp"
+            alt="Artur Abdurakhmanov"
+            width="220"
+            height="220"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+          />
         </div>
         <div class="hero__badge">
           <span class="hero__badge-dot"></span>
