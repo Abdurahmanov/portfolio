@@ -42,6 +42,15 @@ export const useAppStore = defineStore('app', () => {
     (newTheme) => {
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
+
+      const themeColor = newTheme === 'dark' ? '#0d1117' : '#ffffff';
+      let meta = document.querySelector('meta[name="theme-color"]');
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('name', 'theme-color');
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', themeColor);
     },
     { immediate: true },
   );

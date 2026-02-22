@@ -16,9 +16,9 @@ import App from '@/App.vue';
 import { vReveal } from '@/directives/vReveal';
 import { registerSW } from 'virtual:pwa-register';
 
-registerSW({ immediate: true });
-
 const app = createApp(App);
+
+registerSW();
 
 app.use(createPinia());
 app.directive('reveal', vReveal);
