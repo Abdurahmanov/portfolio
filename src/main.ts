@@ -14,6 +14,9 @@ import '@fontsource/outfit/900.css';
 import '@/styles/main.scss';
 import App from '@/App.vue';
 import { vReveal } from '@/directives/vReveal';
+import { registerSW } from 'virtual:pwa-register';
+
+registerSW({ immediate: true });
 
 const app = createApp(App);
 
