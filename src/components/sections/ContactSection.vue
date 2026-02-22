@@ -9,8 +9,9 @@
           :href="`mailto:${store.personal.email}`"
           class="contact__link"
         >
-          <span class="contact__icon" aria-hidden="true">✉</span
-          ><span>{{ store.personal.email }}</span>
+          <IconMail class="contact__icon" aria-hidden="true" /><span>{{
+            store.personal.email
+          }}</span>
         </a>
         <a
           :href="store.personal.linkedin"
@@ -18,8 +19,9 @@
           rel="noopener noreferrer"
           class="contact__link"
         >
-          <span class="contact__icon" aria-hidden="true">in</span
-          ><span>{{ t.contact.linkedinLabel }}</span>
+          <IconLinkedin class="contact__icon" aria-hidden="true" /><span>{{
+            t.contact.linkedinLabel
+          }}</span>
         </a>
       </div>
     </div>
@@ -29,6 +31,9 @@
 <script setup lang="ts">
 import { usePortfolioStore } from '@/stores/portfolio';
 import { useI18n } from '@/i18n';
+import IconMail from '~icons/twemoji/envelope';
+import IconLinkedin from '~icons/logos/linkedin-icon';
+
 const store = usePortfolioStore();
 const { t } = useI18n();
 </script>
@@ -81,11 +86,9 @@ const { t } = useI18n();
 
   &__icon {
     width: 24px;
-    font-size: $font-size-lg;
-    font-style: normal;
-    font-weight: 700;
+    height: 24px;
+    flex-shrink: 0;
     color: var(--color-accent);
-    text-align: center;
   }
 }
 </style>
