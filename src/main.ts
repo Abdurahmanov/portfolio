@@ -14,11 +14,8 @@ import '@fontsource/outfit/900.css';
 import '@/styles/main.scss';
 import App from '@/App.vue';
 import { vReveal } from '@/directives/vReveal';
-import { registerSW } from 'virtual:pwa-register';
 
 const app = createApp(App);
-
-registerSW();
 
 app.use(createPinia());
 app.directive('reveal', vReveal);
