@@ -11,8 +11,6 @@ import '@fontsource/outfit/600.css';
 import '@fontsource/outfit/800.css';
 import '@fontsource/outfit/900.css';
 
-import 'devicon/devicon.min.css';
-
 import '@/styles/main.scss';
 import App from '@/App.vue';
 import { vReveal } from '@/directives/vReveal';

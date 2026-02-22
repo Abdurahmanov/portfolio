@@ -17,10 +17,7 @@
               class="skills__tag glass-card"
               :aria-hidden="i === 2"
             >
-              <i v-if="iconMap[skill]" :class="['skills__icon', iconMap[skill]]"></i>
-              <span v-else-if="emojiMap[skill]" class="skills__emoji" aria-hidden="true">
-                {{ emojiMap[skill] }}
-              </span>
+              <component :is="iconMap[skill]" v-if="iconMap[skill]" class="skills__icon" />
               {{ skill }}
             </span>
           </template>
@@ -32,45 +29,73 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import type { Component } from 'vue';
 import { usePortfolioStore } from '@/stores/portfolio';
 import { useI18n } from '@/i18n';
+
+import IconReact from '~icons/logos/react';
+import IconNextjs from '~icons/logos/nextjs-icon';
+import IconVuejs from '~icons/logos/vue';
+import IconNuxtjs from '~icons/logos/nuxt-icon';
+import IconTypescript from '~icons/logos/typescript-icon';
+import IconJavascript from '~icons/logos/javascript';
+import IconRedux from '~icons/logos/redux';
+import IconMobx from '~icons/logos/mobx';
+import IconGraphql from '~icons/logos/graphql';
+import IconJest from '~icons/logos/jest';
+import IconSass from '~icons/logos/sass';
+import IconFigma from '~icons/logos/figma';
+import IconWebpack from '~icons/logos/webpack';
+import IconVitejs from '~icons/logos/vitejs';
+import IconCapacitor from '~icons/logos/capacitorjs-icon';
+import IconIonic from '~icons/logos/ionic-icon';
+import IconStorybook from '~icons/logos/storybook-icon';
+import IconPinia from '~icons/logos/pinia';
+import IconZustand from '~icons/twemoji/bear';
+import IconRest from '~icons/vscode-icons/file-type-rest';
+import IconLighthouse from '~icons/logos/lighthouse';
+import IconSeo from '~icons/twemoji/magnifying-glass-tilted-right';
+import IconAbTesting from '~icons/twemoji/test-tube';
+import IconVitest from '~icons/logos/vitest';
+import IconCypress from '~icons/logos/cypress-icon';
+import IconStyledComponents from '~icons/vscode-icons/file-type-styled';
+import IconScrum from '~icons/twemoji/counterclockwise-arrows-button';
+import IconKanban from '~icons/twemoji/clipboard';
+import IconHighcharts from '~icons/logos/highcharts';
 
 const store = usePortfolioStore();
 const { t } = useI18n();
 
-const iconMap: Record<string, string> = {
-  React: 'devicon-react-original colored',
-  'Next.js': 'devicon-nextjs-plain',
-  'Vue.js': 'devicon-vuejs-plain colored',
-  'Nuxt.js': 'devicon-nuxtjs-plain colored',
-  TypeScript: 'devicon-typescript-plain colored',
-  'JavaScript (ES6+)': 'devicon-javascript-plain colored',
-  Redux: 'devicon-redux-original colored',
-  MobX: 'devicon-mobx-plain colored',
-  GraphQL: 'devicon-graphql-plain colored',
-  Jest: 'devicon-jest-plain colored',
-  SCSS: 'devicon-sass-original colored',
-  Figma: 'devicon-figma-plain colored',
-  Webpack: 'devicon-webpack-plain colored',
-  Vite: 'devicon-vitejs-plain colored',
-  Capacitor: 'devicon-capacitor-plain colored',
-  Ionic: 'devicon-ionic-original colored',
-  Storybook: 'devicon-storybook-plain colored',
-};
-
-const emojiMap: Record<string, string> = {
-  Pinia: '🍍',
-  Zustand: '🐻',
-  REST: '🌐',
-  'Core Web Vitals': '⚡',
-  SEO: '🔍',
-  'A/B Testing': '🧪',
-  Vitest: '⚡',
-  Cypress: '🤖',
-  'Styled-components': '💅',
-  Scrum: '🔄',
-  Kanban: '📋',
-  Highcharts: '📊',
+const iconMap: Record<string, Component> = {
+  React: IconReact,
+  'Next.js': IconNextjs,
+  'Vue.js': IconVuejs,
+  'Nuxt.js': IconNuxtjs,
+  TypeScript: IconTypescript,
+  'JavaScript (ES6+)': IconJavascript,
+  Redux: IconRedux,
+  MobX: IconMobx,
+  GraphQL: IconGraphql,
+  Jest: IconJest,
+  SCSS: IconSass,
+  Figma: IconFigma,
+  Webpack: IconWebpack,
+  Vite: IconVitejs,
+  Capacitor: IconCapacitor,
+  Ionic: IconIonic,
+  Storybook: IconStorybook,
+  Pinia: IconPinia,
+  Zustand: IconZustand,
+  REST: IconRest,
+  'Core Web Vitals': IconLighthouse,
+  SEO: IconSeo,
+  'A/B Testing': IconAbTesting,
+  Vitest: IconVitest,
+  Cypress: IconCypress,
+  'Styled-components': IconStyledComponents,
+  Scrum: IconScrum,
+  Kanban: IconKanban,
+  Highcharts: IconHighcharts,
 };
 
 const row1 = computed(() => store.skills.slice(0, Math.ceil(store.skills.length / 2)));
@@ -132,12 +157,9 @@ const row2 = computed(() => store.skills.slice(Math.ceil(store.skills.length / 2
   }
 
   &__icon {
+    width: 1.25rem;
+    height: 1.25rem;
     font-size: 1.25rem;
-  }
-
-  &__emoji {
-    font-size: 1.1rem;
-    font-style: normal;
   }
 }
 
