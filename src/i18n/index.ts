@@ -27,6 +27,11 @@ export const messages = {
       descriptionAfter:
         ', micro-frontends, and data-driven development through A/B testing. Strong problem-solving skills, experience in mentoring, and a deep understanding of Agile development processes.',
       languages: 'Languages',
+      travelsTitle: 'Travel & Photography',
+      travelsDescription:
+        'Apart from coding, I love exploring the world and capturing beautiful moments. Traveling gives me inspiration and broadens my perspective.',
+      photoAlts: ['Bern, Switzerland', 'Nice, France', 'Osaka, Japan'],
+      carouselLabel: 'Travel photo gallery',
     },
     skills: { title: 'Skills' },
     experience: { title: 'Experience', present: 'Present' },
@@ -63,6 +68,11 @@ export const messages = {
       descriptionAfter:
         ', микрофронтендах и разработке на основе данных через A/B тестирование. Сильные навыки решения задач, опыт менторинга и глубокое понимание Agile-процессов.',
       languages: 'Языки',
+      travelsTitle: 'Путешествия и Фотография',
+      travelsDescription:
+        'В свободное от кода время я обожаю путешествовать и запечатлевать красивые моменты. Путешествия дарят мне вдохновение и расширяют кругозор.',
+      photoAlts: ['Берн, Швейцария', 'Ницца, Франция', 'Осака, Япония'],
+      carouselLabel: 'Галерея фотографий путешествий',
     },
     skills: { title: 'Навыки' },
     experience: { title: 'Опыт работы', present: 'н.в.' },

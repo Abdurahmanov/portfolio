@@ -10,7 +10,8 @@
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint . --fix",
     "lint:style": "stylelint \"src/**/*.{vue,scss}\" --fix",
-    "format": "prettier --write \"src/**/*.{vue,ts,js,scss}\""
+    "format": "prettier --write \"src/**/*.{vue,ts,js,scss}\"",
+    "optimize-images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
@@ -34,6 +35,7 @@
     "eslint-plugin-vue": "^10.8.0",
     "globals": "^17.3.0",
     "prettier": "^3.8.1",
+    "sharp": "^0.34.5",
     "stylelint": "^17.3.0",
     "stylelint-config-recess-order": "^7.6.1",
     "stylelint-config-recommended-vue": "^1.6.1",

@@ -85,9 +85,9 @@ const { t } = useI18n();
   }
 
   &__icon {
+    flex-shrink: 0;
     width: 24px;
     height: 24px;
-    flex-shrink: 0;
     color: var(--color-accent);
   }
 }
