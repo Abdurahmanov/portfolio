@@ -60,7 +60,7 @@
               />
               <img
                 class="about__gallery-real"
-                :class="{ 'about__gallery-real--loaded': loadedSet[i] }"
+                :class="{ 'about__gallery-real_loaded': loadedSet[i] }"
                 :src="photo.src"
                 :alt="photo.alt"
                 width="400"
@@ -263,7 +263,6 @@ onBeforeUnmount(() => {
 
   &__gallery-placeholder {
     width: 100%;
-    image-rendering: pixelated;
   }
 
   &__gallery-real {
@@ -276,13 +275,13 @@ onBeforeUnmount(() => {
       opacity 0.6s ease,
       transform $transition-base;
 
-    &--loaded {
+    &_loaded {
       opacity: 1;
     }
   }
 
   @media (hover: hover) {
-    &__gallery-item:hover &__gallery-real--loaded {
+    &__gallery-item:hover &__gallery-real_loaded {
       transform: scale(1.05);
     }
   }

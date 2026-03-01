@@ -11,14 +11,32 @@
       <div class="hero__left hero__fade-in">
         <div class="hero__photo">
           <img
-            src="/photo.webp"
-            alt="Artur Abdurakhmanov"
+            class="hero__photo-placeholder"
+            src="data:image/webp;base64,UklGRjABAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSJUAAAABgJpt27LsBZpGkusAzMAKdJiARGICkkYm4KC6S3JN7iSL8uuL3g+/9oiYAPatQo3mOWv/ncdtApLEy8/3JTNBvz/DtR55zsSqADQpZzlYUg5C0KKMGIxSKshNiaAMZaMAr5SzGfQoH1LgosQZFIUQVyLmQGX2FXaCdIr6YuQ4E52P1MF3Cg9bGNMGX85P8rzt4/wfAgBWUDggdAAAAFAEAJ0BKhQAGwA/EXS0UqwmJSKwGAgBgCIJQBjmAh33uJR+p3ZwrFGaWkgA/svBX8UTsXNaS7URrJUb8bOk9vhiwoK8RK1Y3PxdL/DZhtRDHt3S/2j/jh9ja4b6l5Ct+2SrkEeoQN5/VHMixeW0xrpS/AAA"
+            alt=""
+            aria-hidden="true"
             width="220"
             height="220"
-            fetchpriority="high"
-            loading="eager"
-            decoding="async"
           />
+          <picture>
+            <source
+              srcset="/photo-220w.webp 220w, /photo-440w.webp 440w"
+              sizes="220px"
+              type="image/webp"
+            />
+            <img
+              class="hero__photo-real"
+              :class="{ 'hero__photo-real_loaded': photoLoaded }"
+              src="/photo-220w.webp"
+              alt="Artur Abdurakhmanov"
+              width="220"
+              height="220"
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
+              @load="photoLoaded = true"
+            />
+          </picture>
         </div>
         <div class="hero__badge">
           <span class="hero__badge-dot"></span>
@@ -58,6 +76,8 @@ import { useI18n } from '@/i18n';
 
 const store = usePortfolioStore();
 const { t, locale } = useI18n();
+
+const photoLoaded = ref(false);
 
 const mouseX = ref(50);
 const mouseY = ref(50);
@@ -143,6 +163,7 @@ function scrollTo(selector: string) {
   }
 
   &__photo {
+    position: relative;
     width: 220px;
     height: 220px;
     overflow: hidden;
@@ -170,11 +191,34 @@ function scrollTo(selector: string) {
       margin: 0 auto;
     }
 
-    img,
-    svg {
+    &::before {
+      content: none;
+    }
+
+    picture {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: block;
+    }
+
+    img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+
+    &-placeholder {
+      filter: blur(8px);
+    }
+
+    &-real {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+
+      &_loaded {
+        opacity: 1;
+      }
     }
   }
 
