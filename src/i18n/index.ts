@@ -107,7 +107,7 @@ export function useI18n() {
   const t = computed(() => messages[appStore.locale]);
   const yearsOfExperience = computed(() => calcYearsOfExperience());
   const PAGESPEED_URL =
-    'https://pagespeed.web.dev/analysis/https-abdurakhmanov-art/ap00evbduy?form_factor=desktop';
+    'https://pagespeed.web.dev/analysis/https-abdurakhmanov-art/6kkjgckbhl?form_factor=desktop';
 
   const aboutDescriptionBefore = computed(() =>
     t.value.about.descriptionBefore.replace('{years}', String(yearsOfExperience.value)),
